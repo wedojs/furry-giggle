@@ -1,2 +1,2 @@
-# furry-giggle
+# scriptures
 Awesome data structures in JavaScript
