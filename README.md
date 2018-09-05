@@ -1,2 +1,2 @@
-# furry-giggle
+# Scriptures
 Data structure practices with JavaScript
