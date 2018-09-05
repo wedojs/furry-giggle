@@ -1,0 +1,29 @@
+{
+  "name": "scriptures",
+  "version": "1.0.1",
+  "description": "Data Structures",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "publish-please": "^3.2.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "publish-please": "publish-please",
+    "prepublishOnly": "publish-please guard"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wedojs/furry-giggle.git"
+  },
+  "keywords": [
+    "Data",
+    "Structures"
+  ],
+  "author": "DAPS",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wedojs/furry-giggle/issues"
+  },
+  "homepage": "https://github.com/wedojs/furry-giggle#readme"
+}

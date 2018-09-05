@@ -1,2 +1,2 @@
-# scriptures
-Awesome data structures in JavaScript
+# Scriptures
+Data structure practices with JavaScript
