@@ -1,2 +1,2 @@
 # furry-giggle
-Data structure practices with JavaScript
+Awesome data structures in JavaScript
