@@ -25,7 +25,6 @@
     if (_.numberOfNodes === 0) {
       _.head.data = val
       _.ptr = _.head
-      _.numberOfNodes += 1
     } else {
       let tmp = {
         data: val,
@@ -34,6 +33,7 @@
       _.ptr.next = tmp
       _.ptr = tmp
     }
+    _.numberOfNodes += 1
     return this
   }
 
@@ -48,7 +48,6 @@
     if (_.numberOfNodes === 0) {
       _.head.data = val
       _.ptr = _.head
-      _.numberOfNodes += 1
     } else {
       let tmp = {
         data: val,
@@ -56,6 +55,7 @@
       }
       _.head = tmp
     }
+    _.numberOfNodes += 1
     return this
   }
 
