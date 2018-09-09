@@ -4,7 +4,7 @@
  * @property {function} showLinkedList
  */
 
- exports.Singly = function () {
+exports.Singly = function () {
   let _ = {}
   _.numberOfNodes = 0
   /**
@@ -23,26 +23,26 @@
         data: val,
         next: null
       }
-      _.ptr = _.head
     } else {
-      let tmp = {
+      let tmp
+      for(tmp = _.head; tmp.next !== null; tmp = tmp.next);
+
+      tmp.next = {
         data: val,
         next: null
       }
-      _.ptr.next = tmp
-      _.ptr = tmp
     }
     _.numberOfNodes += 1
     return this
   }
 
-   /**
-   * @function
-   * @memberof Singly
-   * @param {Object} val - data part of the node
-   * @returns {Singly}
-   * @description - adds a new node to the beginning of existing singly linked list
-   */
+  /**
+  * @function
+  * @memberof Singly
+  * @param {Object} val - data part of the node
+  * @returns {Singly}
+  * @description - adds a new node to the beginning of existing singly linked list
+  */
   this.addFirst = (val) => {
     /**
      * Initialize head and ptr
@@ -52,7 +52,6 @@
         data: val,
         next: null
       }
-      _.ptr = _.head
     } else {
       let tmp = {
         data: val,
@@ -71,8 +70,10 @@
    * @description - deletes the head node
    */
   this.deleteHead = () => {
-    _.head = _.head.next
-    _.numberOfNodes = _.numberOfNodes > 0 ? _.numberOfNodes - 1: _.numberOfNodes
+    if(_.numberOfNodes > 0) {
+      _.head = _.head.next
+      _.numberOfNodes = _.numberOfNodes > 0 ? _.numberOfNodes - 1 : _.numberOfNodes
+    }
     return this
   }
 
@@ -83,9 +84,9 @@
    * @description - deletes the tail node
    */
   this.deleteTail = () => {
-    if(_.numberOfNodes === 1) {
+    if (_.numberOfNodes === 1) {
       this.deleteHead()
-    }else {
+    } else if(_.numberOfNodes > 1) {
       /**
        * Start traversing from head.
        * Termination condition
@@ -93,15 +94,43 @@
        * then set (node a)|data, next|.next = null
        */
       let tmp;
-      for(tmp = _.head; tmp.next.next != null; tmp = tmp.next);
+      for (tmp = _.head; tmp.next.next != null; tmp = tmp.next);
 
       tmp.next = null
-      /**
-       * Update ptr
-       */
-      _.ptr = tmp
+
     }
-    _.numberOfNodes = _.numberOfNodes > 0 ? _.numberOfNodes - 1: _.numberOfNodes
+    _.numberOfNodes = _.numberOfNodes > 0 ? _.numberOfNodes - 1 : _.numberOfNodes
+    return this
+  }
+
+  /**
+   * @function
+   * @memberof Singly
+   * @param {Object} val - data part of the node
+   * @returns {Singly}
+   * @description - deletes the first node which matches the passed value
+   */
+  this.deleteByValue = (val) => {
+    if (_.numberOfNodes === 1) {
+      if (_.head.data === val) {
+        this.deleteHead()
+      }
+    } else {
+      let tmp
+      let index
+      /**
+       * Check whether the head node is the target
+       */
+      for (tmp = _.head, index = -1; tmp.data === val; tmp = tmp.next, index += 1);
+      if (index === 0)
+        this.deleteHead()
+      else {
+        for (tmp = _.head; tmp.next.value === val; tmp = tmp.next);
+        tmp.next = tmp.next.next
+        _.numberOfNodes = _.numberOfNodes > 0 ? _.numberOfNodes - 1 : _.numberOfNodes
+      }
+    }
+    
     return this
   }
 
