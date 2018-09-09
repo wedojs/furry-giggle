@@ -121,12 +121,12 @@ exports.Singly = function () {
       /**
        * Check whether the head node is the target
        */
-      for (tmp = _.head, index = -1; tmp.data === val; tmp = tmp.next, index += 1);
+      for (tmp = _.head, index = -1; tmp != null && tmp.data === val; tmp = tmp.next, index += 1);
       if (index === 0)
         this.deleteHead()
       else {
-        for (tmp = _.head; tmp.next.value === val; tmp = tmp.next);
-        tmp.next = tmp.next.next
+        for (tmp = _.head; tmp.next != null && tmp.next.data !== val; tmp = tmp.next);
+        tmp.next = tmp.next && tmp.next.next 
         _.numberOfNodes = _.numberOfNodes > 0 ? _.numberOfNodes - 1 : _.numberOfNodes
       }
     }
