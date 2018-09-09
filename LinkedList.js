@@ -126,8 +126,14 @@ exports.Singly = function () {
         this.deleteHead()
       else {
         for (tmp = _.head; tmp.next != null && tmp.next.data !== val; tmp = tmp.next);
-        tmp.next = tmp.next && tmp.next.next 
-        _.numberOfNodes = _.numberOfNodes > 0 ? _.numberOfNodes - 1 : _.numberOfNodes
+        try {
+          tmp.next = tmp.next.next
+          _.numberOfNodes = _.numberOfNodes > 0 ? _.numberOfNodes - 1 : _.numberOfNodes
+        }catch(err) {
+          console.log(val, ' does not exist')
+        }
+        
+        
       }
     }
     
@@ -140,6 +146,7 @@ exports.Singly = function () {
    * @description - displays the singly linked list
    */
   this.showLinkedList = () => {
+    console.log('Total number of nodes ', _.numberOfNodes)
     console.log('--Display Starts--')
     for (let tmp = _.head; tmp != null; tmp = tmp.next) {
       console.log(tmp.data)
