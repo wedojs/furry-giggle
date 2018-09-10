@@ -1,0 +1,1 @@
+exports.Singly = require('./Singly').Singly

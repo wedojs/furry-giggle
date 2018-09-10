@@ -1,2 +1,2 @@
-const LinkedList = require('./LinkedList')
+const LinkedList = require('./LinkedList/index')
 exports.LinkedList = LinkedList
