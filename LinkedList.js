@@ -132,11 +132,33 @@ exports.Singly = function () {
         }catch(err) {
           console.log(val, ' does not exist')
         }
-        
-        
       }
     }
     
+    return this
+  }
+
+  /**
+   * @function
+   * @memberof Singly
+   * @param {Object} val - data part of the node
+   * @returns {Singly}
+   * @description - deletes the node which matches the passed index
+   */
+  this.deleteByIndex = (index) => {
+    debugger
+    if (index === 0) {
+      this.deleteHead()
+    } else {
+      let _index
+      for(_index = 0, tmp = _.head; tmp != null && _index + 1 !== index; _index += 1, tmp = tmp.next);
+        try {
+          tmp.next = tmp.next.next
+          _.numberOfNodes = _.numberOfNodes > 0 ? _.numberOfNodes - 1 : _.numberOfNodes
+        }catch(e) {
+          console.log('Error')
+        }
+    }
     return this
   }
 
